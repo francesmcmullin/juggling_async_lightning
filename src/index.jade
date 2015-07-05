@@ -1,0 +1,131 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+    title JUGGLING ASYNC
+
+    link(rel='stylesheet', type='text/css', href='build/build.css')
+
+  body
+
+    article
+      section.test
+        h1 Is this working properly? Press P to play, refresh the page to start again
+
+      section
+        h1 JUGGLING ASYNC
+        h2 David McMullin
+        img.avatar(src='images/cocoa.jpg')
+        h4 @davecocoa7 / davecocoa
+
+      section
+        img(src='./images/async-menu.png')
+
+      section
+        img(src='./images/async-desc.png')
+
+      section
+        pre
+          code.language-javascript.
+            var http = require('http')
+            
+            process.argv.slice(2).forEach(function(url, index){
+              http.get(url, function(resp){
+                var output = ""
+                resp.on('data', function(data){
+                  output += data
+                })
+                resp.on('end', function(){
+                  console.log(output)
+                })
+              })
+            })
+            
+      section
+        pre
+          code.language-javascript.
+            var http = require('http')
+            
+            var outputs = []
+            process.argv.slice(2).forEach(function(url, index){
+              http.get(url, function(resp){
+                var output = ""
+                resp.on('data', function(data){
+                  output += data
+                })
+                resp.on('end', function(){
+                  console.log(output)
+                })
+              })
+            })
+
+      section
+        pre
+          code.language-javascript.
+            var http = require('http')
+            
+            var outputs = []
+            process.argv.slice(2).forEach(function(url, index){
+              http.get(url, function(resp){
+                outputs[index] = ""
+                resp.on('data', function(data){
+                  outputs[index] += data
+                })
+                resp.on('end', function(){
+                  console.log(outputs[index])
+                })
+              })
+            })
+
+
+      section
+        pre
+          code.language-javascript.
+            var http = require('http')
+            
+            var outputs = []
+            process.argv.slice(2).forEach(function(url, index){
+              http.get(url, function(resp){
+                outputs[index] = ""
+                resp.on('data', function(data){
+                  outputs[index] += data
+                })
+                resp.on('end', all_requests_complete_question_mark)
+              })
+            })
+            
+            function all_requests_complete_question_mark(){
+              outputs.forEach(function(output){
+                console.log(output)
+              })
+            }
+
+      section
+        pre
+          code.language-javascript.
+            var http = require('http')
+            
+            var outputs = []
+            process.argv.slice(2).forEach(function(url, index){
+              http.get(url, function(resp){
+                outputs[index] = ""
+                resp.on('data', function(data){
+                  outputs[index] += data
+                })
+                resp.on('end', all_requests_complete_question_mark)
+              })
+            })
+            
+            var finished_requests = 0
+            function all_requests_complete_question_mark(){
+              finished_requests++
+              if(finished_requests !== outputs.length) { return }
+            
+              outputs.forEach(function(output){
+                console.log(output)
+              })
+            }
+
+
+    script(src='build/build.js')
