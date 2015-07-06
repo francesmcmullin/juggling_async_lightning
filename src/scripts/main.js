@@ -20,6 +20,7 @@ bespoke.from('article', [
       { "command": "next", "timeout": 150000 }, // 150s
       { "command": "next", "timeout": 180000 }, // 180s
       { "command": "next", "timeout": 230000 }, // 230s
+      { "command": "next", "timeout": 295000 }, // 295s
     ]
   }),
   simpleSlide(),
