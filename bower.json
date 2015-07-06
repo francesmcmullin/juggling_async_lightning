@@ -2,6 +2,8 @@
   "name": "presentation-juggling-async",
   "version": "0.0.0",
   "dependencies": {
-    "prism": "gh-pages"
+    "prism": "gh-pages",
+    "bespoke-theme-simple-slide": "~0.1.0",
+    "bespoke-vcr": "~0.1.0"
   }
 }
