@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>JUGGLING ASYNC</title>
+    <link rel="stylesheet" type="text/css" href="build/build.css">
+  </head>
+  <body>
+    <article>
+      <section class="test">
+        <h1>Is this working properly? Press P to play, refresh the page to start again</h1>
+      </section>
+      <section>
+        <h1>JUGGLING ASYNC</h1>
+        <h2>David McMullin</h2><img src="images/cocoa.jpg" class="avatar">
+        <h4>@davecocoa7 / davecocoa</h4>
+      </section>
+      <section><img src="./images/async-menu.png"></section>
+      <section><img src="./images/async-desc.png"></section>
+      <section>
+        <pre><code class="language-javascript">var http = require('http')
+
+process.argv.slice(2).forEach(function(url, index){
+  http.get(url, function(resp){
+    var output = ""
+    resp.on('data', function(data){
+      output += data
+    })
+    resp.on('end', function(){
+      console.log(output)
+    })
+  })
+})
+</code></pre>
+      </section>
+      <section>
+        <pre><code class="language-javascript">var http = require('http')
+
+var outputs = []
+process.argv.slice(2).forEach(function(url, index){
+  http.get(url, function(resp){
+    var output = ""
+    resp.on('data', function(data){
+      output += data
+    })
+    resp.on('end', function(){
+      console.log(output)
+    })
+  })
+})
+</code></pre>
+      </section>
+      <section>
+        <pre><code class="language-javascript">var http = require('http')
+
+var outputs = []
+process.argv.slice(2).forEach(function(url, index){
+  http.get(url, function(resp){
+    outputs[index] = ""
+    resp.on('data', function(data){
+      outputs[index] += data
+    })
+    resp.on('end', function(){
+      console.log(outputs[index])
+    })
+  })
+})
+
+</code></pre>
+      </section>
+      <section>
+        <pre><code class="language-javascript">var http = require('http')
+
+var outputs = []
+process.argv.slice(2).forEach(function(url, index){
+  http.get(url, function(resp){
+    outputs[index] = ""
+    resp.on('data', function(data){
+      outputs[index] += data
+    })
+    resp.on('end', all_requests_complete_question_mark)
+  })
+})
+
+function all_requests_complete_question_mark(){
+  outputs.forEach(function(output){
+    console.log(output)
+  })
+}
+</code></pre>
+      </section>
+      <section>
+        <pre><code class="language-javascript">var http = require('http')
+
+var outputs = []
+process.argv.slice(2).forEach(function(url, index){
+  http.get(url, function(resp){
+    outputs[index] = ""
+    resp.on('data', function(data){
+      outputs[index] += data
+    })
+    resp.on('end', all_requests_complete_question_mark)
+  })
+})
+
+var finished_requests = 0
+function all_requests_complete_question_mark(){
+  finished_requests++
+  if(finished_requests !== outputs.length) { return }
+  
+  outputs.forEach(function(output){
+    console.log(output)
+  })
+}
+</code></pre>
+      </section>
+      <section>
+        <h1>Thank You!</h1>
+      </section>
+    </article>
+    <script src="build/build.js"></script>
+  </body>
+</html>
